@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"  
+		xmlns:s="library://ns.adobe.com/flex/spark"  
+		title="Secret details">
+	
+	<s:HGroup verticalAlign="middle" gap="12">
+		
+		<s:VGroup>
+		</s:VGroup>
+		
+	</s:HGroup>
+	<s:Label x="36" y="76" text="{data.name}"/>
+	<s:Label x="36" y="163" text="{data.url}" click="navigateToURL(new URLRequest(data.url));"/>
+	<s:TextInput x="37" y="262" width="407" text="{data.login}"/>
+	<s:TextInput x="37" y="379" width="407" text="{data.password}"/>
+	<s:Label x="36" y="45" text="Service:"/>
+	<s:Label x="36" y="127" text="WWW url:"/>
+	<s:Label x="36" y="210" text="Login:"/>
+	<s:Label x="36" y="336" text="Password:"/>
+	<s:navigationContent>
+		<s:Button x="37" y="513" width="128" label="&lt; Back" click="navigator.popToFirstView()"/>	
+	</s:navigationContent>
+	
+	
+</s:View>

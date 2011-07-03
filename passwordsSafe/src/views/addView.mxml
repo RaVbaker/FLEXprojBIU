@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="Add secret">
+	
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.rpc.events.ResultEvent;
+			[Bindable]
+			private var serviceObj:ArrayCollection;
+			import mx.rpc.events.FaultEvent;
+		
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				var serviceObj:Object = {};
+				serviceObj.name = service.text;
+				serviceObj.login = login.text;
+				serviceObj.password = password.text;
+				serviceObj.url = url.text;
+				
+				newSrv.send(serviceObj);					
+
+				navigator.pushView(listView);
+				
+			}
+
+			
+		]]>
+	</fx:Script>
+	
+	
+	<fx:Declarations>
+		<s:HTTPService id="newSrv" url="http://www.passserv.dev/services.xml" useProxy="false" method="POST" />
+	</fx:Declarations>
+	
+	<s:TextInput id="service" x="20" y="96"/>
+	<s:Label x="20" y="43" text="Service"/>
+	<s:TextInput id="login" x="19" y="232"/>
+	<s:Label x="19" y="179" text="Login"/>
+	<s:TextInput id="password" x="20" y="362"/>
+	<s:Label x="20" y="309" text="Password"/>
+	<s:TextInput id="url" x="20" y="478"/>
+	<s:Label x="20" y="429" text="WWW url"/>
+	<s:Button x="20" y="549" width="440" label="Save" click="button1_clickHandler(event)"/>
+	
+</s:View>

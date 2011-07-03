@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="List of secrets" creationComplete="srv.send()" >
+	
+	<fx:Declarations>
+		
+		<s:HTTPService id="srv" url="http://www.passserv.dev/services.xml" useProxy="false" method="GET" result="data=srv.lastResult.services.service"/>
+		</fx:Declarations>
+
+	
+	<s:titleContent>
+		<s:TextInput id="key" width="100%"/>
+	</s:titleContent>
+	<s:actionContent>
+		<s:Button click="srv.send({q: key.text});" label="Search"/>
+	</s:actionContent>
+	
+	
+	<s:List id="list" top="0" bottom="0" left="0" right="0" 
+			dataProvider="{data}"  
+			labelField="name"
+			change="navigator.pushView(showView, list.selectedItem)">
+		
+		<s:itemRenderer>
+			<fx:Component>
+			
+					
+				<s:IconItemRenderer
+					label="{data.name} - {data.login}" 
+					messageField="url"/>
+
+			</fx:Component>
+		</s:itemRenderer>
+	</s:List>
+</s:View>
